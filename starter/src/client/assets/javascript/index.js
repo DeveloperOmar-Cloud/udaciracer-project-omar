@@ -6,7 +6,7 @@ let store = {
 	track_name: undefined,
 	player_id: undefined,
 	player_name: undefined,
-	race_id: undefined,
+	race_id : undefined,
 }
 
 // We need our javascript to wait until the DOM is loaded
@@ -91,20 +91,22 @@ async function handleCreateRace() {
 	// render starting UI
 	renderAt('#race', renderRaceStartView(store.track_name))
 
-	// TODO - Get player_id and track_id from the store
-	// const playerId = store.player_id;
-	// const trackId = store.track_id;
+		// TODO - Get player_id and track_id from the store
+		// const playerId = store.player_id;
+		// const trackId = store.track_id;
 
-	// const race = TODO - call the asynchronous method createRace, passing the correct parameters
-	const race = createRace(store.player_id, store.track_id)
+		// const race = TODO - call the asynchronous method createRace, passing the correct parameters
+
+	const race = await createRace(store.player_id, store.track_id)
 
 	// TODO - update the store with the race id in the response
 	// TIP - console logging API responses can be really helpful to know what data shape you received
-	console.log("RACE: ", race)
-	// store.race_id =
+	console.log("RACE: ", race);
+	store.race_id = race.ID;
 
 	// The race has been created, now start the countdown
 	// TODO - call the async function runCountdown
+	// runCountdown();
 
 	// TODO - call the async function startRace
 	// TIP - remember to always check if a function takes parameters before calling it!
@@ -142,10 +144,11 @@ async function runCountdown() {
 		return new Promise(resolve => {
 			// TODO - use Javascript's built in setInterval method to count down once per second
 
-			// run this DOM manipulation inside the set interval to decrement the countdown for the user
-			document.getElementById('big-numbers').innerHTML = --timer
 
-			// TODO - when the setInterval timer hits 0, clear the interval, resolve the promise, and return
+			// run this DOM manipulation inside the set interval to decrement the countdown for the user - done
+			document.getElementById('big-numbers').innerHTML = --timer;
+
+			// TODO - when the setInterval timer hits 0, clear the interval, resolve the promise, and return - done
 
 		})
 	} catch(error) {
