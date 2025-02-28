@@ -239,7 +239,12 @@ function renderRacerCard(racer) {
 	const { id, driver_name, top_speed, acceleration, handling } = racer
 	// OPTIONAL: There is more data given about the race cars than we use in the game, if you want to factor in top speed, acceleration,
 	// and handling to the various vehicles, it is already provided by the API!
-	return `<h4 class="card racer" id="${id}">${driver_name}</h3>`
+	return `<h4 class="card racer" id="${id}">${driver_name}</h3>
+			<div class="racercard">
+				<p>Top Speed: ${top_speed} km/h</p>
+				<p>Acceleration: ${acceleration}</p>
+				<p>Handling: ${handling}</p>
+			</div>`
 }
 
 function renderTrackCards(tracks) {
@@ -292,6 +297,7 @@ function renderRaceStartView(track) {
 }
 
 function resultsView(positions) {
+	let userPlayer = positions.find(e => e.id === parseInt(store.player_id))
 	userPlayer.driver_name += " (you)"
 	let count = 1
 
