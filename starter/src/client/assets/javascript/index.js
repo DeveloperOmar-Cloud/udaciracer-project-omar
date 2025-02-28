@@ -165,6 +165,7 @@ async function runCountdown() {
 			let countdownInterval = setInterval(() => {
 				if (timer === 0) {
 					clearInterval(countdownInterval);
+					resolve();
 				} else {
 					document.getElementById('big-numbers').innerHTML = --timer
 
