@@ -365,7 +365,7 @@ function defaultFetchOpts() {
 	}
 }
 
-// TODO - Make a fetch call (with error handling!) to each of the following API endpoints
+// TODO - Make a fetch call (with error handling!) to each of the following API endpoints - done
 
 function getTracks() {
 	console.log(`calling server :: ${SERVER}/api/tracks`)
@@ -377,7 +377,7 @@ function getTracks() {
 			return data;
 		})
 		.catch(err => console.log("Fetching tracks has failed", err));
-	// TODO: Fetch tracks
+	// TODO: Fetch tracks - done
 	// TIP: Don't forget a catch statement!
 }
 
