@@ -114,7 +114,7 @@ async function handleCreateRace() {
 
 	await startRace(raceID);
 
-	// TODO - call the async function runRace
+	// TODO - call the async function runRace - done
 	await runRace(raceID)
 		.catch((err) => console.log(`Error with runRace :: ${err}`));
 
@@ -137,14 +137,14 @@ async function runRace(raceID) {
 			}
 		}, 500);
 	/*
-		TODO - if the race info status property is "in-progress", update the leaderboard by calling:
+		TODO - if the race info status property is "in-progress", update the leaderboard by calling: - done
 
 
 		renderAt('#leaderBoard', raceProgress(res.positions))
 	*/
 
 	/*
-		TODO - if the race info status property is "finished", run the following:
+		TODO - if the race info status property is "finished", run the following: - done
 
 		clearInterval(raceInterval) // to stop the interval from repeating
 		renderAt('#race', resultsView(res.positions)) // to render the results view
@@ -161,7 +161,7 @@ async function runCountdown() {
 		let timer = 3
 
 		return new Promise(resolve => {
-			// TODO - use Javascript's built in setInterval method to count down once per second
+			// TODO - use Javascript's built in setInterval method to count down once per second - done
 			let countdownInterval = setInterval(() => {
 				if (timer === 0) {
 					clearInterval(countdownInterval);
@@ -211,7 +211,9 @@ function handleSelectTrack(target) {
 
 function handleAccelerate() {
 	console.log("accelerate button clicked")
-	// TODO - Invoke the API call to accelerate
+	// TODO - Invoke the API call to accelerate - done
+
+	accelerate(store.race_id)
 }
 
 // HTML VIEWS ------------------------------------------------
@@ -432,8 +434,8 @@ function accelerate(id) {
 	// POST request to `${SERVER}/api/races/${id}/accelerate`
 	// options parameter provided as defaultFetchOpts
 	// no body or datatype needed for this request
-	return fetch(`${SERVER}/api/races/${id}/start`, {
+	return fetch(`${SERVER}/api/races/${id}/accelerate`, {
 		method: 'POST',
 		...defaultFetchOpts(),
-	})
+	}).catch((err) => console.log("accelerating has failed,", err));
 }
